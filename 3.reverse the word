@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class ReverseWordUsingLoop {
+    public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a word: ");
+        String word = scanner.nextLine();
+
+      
+        String reversedWord = reverseUsingLoop(word);
+        System.out.println("Reversed word: " + reversedWord);
+        scanner.close();
+    }
+
+    public static String reverseUsingLoop(String word) {
+   
+        String reversed = "";
+
+       
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed += word.charAt(i);
+        }
+
+        return reversed;
+    }
+}
