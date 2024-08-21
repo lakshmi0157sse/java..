@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class FibonacciSum {
+
+    public static void main(String[] args) {
+       
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the number of Fibonacci terms
+        System.out.print("Enter the number of Fibonacci terms: ");
+        int n = scanner.nextInt();
+
+      
+        int fib1 = 0, fib2 = 1;
+        int sum = fib1 + fib2;
+
+        // Handle the special case where n is 1
+        if (n == 1) {
+            sum = fib1;
+        } else if (n == 2) {
+            sum = fib1 + fib2;
+        } else {
+          
+            for (int i = 3; i <= n; i++) {
+                int fibNext = fib1 + fib2;
+                sum += fibNext;
+                fib1 = fib2;
+                fib2 = fibNext;
+            }
+        }
+
+        
+        System.out.println("The sum of the first " + n + " Fibonacci numbers is: " + sum);
+
+        // Close the scanner
+        scanner.close();
+    }
+}
