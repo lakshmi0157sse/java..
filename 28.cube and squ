@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class SquareCubeCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a decimal number: ");
+        double number = scanner.nextDouble();
+        
+        double square = calculateSquare(number);
+        double cube = calculateCube(number);
+        
+        System.out.println("The square of " + number + " is: " + square);
+        System.out.println("The cube of " + number + " is: " + cube);
+    }
+    
+    public static double calculateSquare(double number) {
+        return number * number;
+    }
+    
+    public static double calculateCube(double number) {
+        return number * number * number;
+    }
+}
