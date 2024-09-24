@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class CurrentTimeGMT {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.print("Input the time zone offset to GMT: ");
+int offset = scanner.nextInt();
+
+    long currentTimeMillis = System.currentTimeMillis();
+    long totalSeconds = currentTimeMillis / 1000;
+    long currentSecond = totalSeconds % 60;
+    long totalMinutes = totalSeconds / 60;
+    long currentMinute = totalMinutes % 60;
+    long totalHours = totalMinutes / 60;
+    long currentHour = (totalHours % 24) + offset;
+
+    System.out.println("Current time is " + currentHour + ":" + currentMinute + ":" + currentSecond);
+}
+}
+
