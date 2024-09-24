@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class IntegerOperations {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.print("Input 1st integer: ");
+int num1 = scanner.nextInt();
+System.out.print("Input 2nd integer: ");
+int num2 = scanner.nextInt();
+
+    int sum = num1 + num2;
+    int difference = Math.abs(num1 - num2);
+    int product = num1 * num2;
+    double average = (num1 + num2) / 2.0;
+    int max = Math.max(num1, num2);
+    int min = Math.min(num1, num2);
+
+    System.out.println("Sum: " + sum);
+    System.out.println("Difference: " + difference);
+    System.out.println("Product: " + product);
+    System.out.printf("Average: %.2f\n", average);
+    System.out.println("Max integer: " + max);
+    System.out.println("Min integer: " + min);
+}
+}
