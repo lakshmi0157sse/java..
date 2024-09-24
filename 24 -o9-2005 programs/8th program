@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class SpeedCalculator {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Input distance in meters: ");
+    double distance = scanner.nextDouble();
+    System.out.print("Input hour: ");
+    int hour = scanner.nextInt();
+    System.out.print("Input minutes: ");
+    int minute = scanner.nextInt();
+    System.out.print("Input seconds: ");
+    int second = scanner.nextInt();
+
+    int totalTimeInSeconds = (hour * 3600) + (minute * 60) + second;
+    double speedMetersPerSecond = distance / totalTimeInSeconds;
+    double speedKmPerHour = (distance / 1000.0) / (totalTimeInSeconds / 3600.0);
+    double speedMilesPerHour = (distance / 1609.0) / (totalTimeInSeconds / 3600.0);
+
+    System.out.println("Your speed in meters/second is " + speedMetersPerSecond);
+    System.out.println("Your speed in km/h is " + speedKmPerHour);
+    System.out.println("Your speed in miles/h is " + speedMilesPerHour);
+}
+}
