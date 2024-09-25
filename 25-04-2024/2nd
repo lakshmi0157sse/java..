@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class ReverseAndAddPalindrome {
+
+    // Function to reverse a number
+    public static int reverseNumber(int num) {
+        int reversed = 0;
+        while (num > 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+        return reversed;
+    }
+
+    // Function to check if a number is a palindrome
+    public static boolean isPalindrome(int num) {
+        return num == reverseNumber(num);
+    }
+
+    // Function to reverse and add until a palindrome is found
+    public static void reverseAndAdd(int num) {
+        while (!isPalindrome(num)) {
+            int reversed = reverseNumber(num);
+            System.out.println(num + " + " + reversed + " = " + (num + reversed));
+            num = num + reversed;
+        }
+        System.out.println("Palindrome number is: " + num);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+
+        reverseAndAdd(num);
+    }
+}
