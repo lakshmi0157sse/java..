@@ -1,0 +1,38 @@
+// SuperClass with a parameterized constructor
+class SuperClass {
+    int number;
+
+    // Parameterized constructor
+    SuperClass(int number) {
+        this.number = number; // Assigning the parameter to the instance variable
+        System.out.println("SuperClass constructor called. Number: " + number);
+    }
+
+    void display() {
+        System.out.println("SuperClass display method. Number: " + number);
+    }
+}
+
+// Subclass hiding the member of SuperClass
+class SubClass extends SuperClass {
+    int number; // This hides the number variable in SuperClass
+
+    // Subclass constructor
+    SubClass(int superNumber, int subNumber) {
+        super(superNumber); // Calling SuperClass constructor
+        this.number = subNumber; // Assigning the parameter to the subclass instance variable
+    }
+
+    // Displaying both superclass and subclass member
+    void display() {
+        super.display(); // Call display method of SuperClass
+        System.out.println("SubClass display method. Number: " + number);
+    }
+}
+
+public class MemberHidingExample {
+    public static void main(String[] args) {
+        SubClass subClassInstance = new SubClass(10, 20); // SuperClass number is 10, SubClass number is 20
+        subClassInstance.display();
+    }
+}
