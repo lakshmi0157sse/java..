@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class FizzBuzz {
+    public static List<String> fizzBuzz(int n) {
+        // Create a list to store the answer
+        List<String> answer = new ArrayList<>();
+        
+        // Loop through numbers from 1 to n
+        for (int i = 1; i <= n; i++) {
+            // For numbers divisible by both 3 and 5
+            if (i % 3 == 0 && i % 5 == 0) {
+                answer.add("FizzBuzz");
+            }
+            // For numbers divisible by 3
+            else if (i % 3 == 0) {
+                answer.add("Fizz");
+            }
+            // For numbers divisible by 5
+            else if (i % 5 == 0) {
+                answer.add("Buzz");
+            }
+            // For numbers not divisible by 3 or 5
+            else {
+                answer.add(Integer.toString(i));
+            }
+        }
+        
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        // Test the function with n = 15
+        int n = 15;
+        List<String> result = fizzBuzz(n);
+        
+        // Print the result
+        for (String s : result) {
+            System.out.println(s);
+        }
+    }
+}
