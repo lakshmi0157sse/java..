@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class ReverseAndAdd {
+    
+    // Method to reverse a number
+    public static int reverseNumber(int num) {
+        int reversed = 0;
+        while (num > 0) {
+            reversed = reversed * 10 + num % 10;
+            num /= 10;
+        }
+        return reversed;
+    }
+
+    // Method to check if a number is palindrome
+    public static boolean isPalindrome(int num) {
+        return num == reverseNumber(num);
+    }
+
+    // Method to perform reverse and add until a palindrome is found
+    public static void reverseAndAddUntilPalindrome(int num) {
+        int count = 0;
+        
+        while (!isPalindrome(num)) {
+            int reversed = reverseNumber(num);
+            num = num + reversed;
+            count++;
+            System.out.println("Step " + count + ": Number after adding " + reversed + " is " + num);
+        }
+        System.out.println("\nPalindrome found: " + num);
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Taking input from user
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        // Perform reverse and add until palindrome
+        reverseAndAddUntilPalindrome(number);
+
+        scanner.close();
+    }
+}
