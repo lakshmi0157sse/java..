@@ -1,0 +1,89 @@
+
+
+import java.util.Scanner;
+
+class BankAccount {
+    // Data members
+    private String depositorName;
+    private String accountNumber;
+    private String accountType; // Savings or Current
+    private double balance; // Minimum balance is Rs. 500.00
+
+    // Constructor to initialize the account with a minimum balance
+    public BankAccount(String depositorName, String accountNumber, String accountType) {
+        this.depositorName = depositorName;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.balance = 10000; // Assume initial balance is Rs. 10,000.00
+    }
+
+    // Method to deposit money
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Amount Rs." + amount + " deposited successfully.");
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+        displayBalance();
+    }
+
+    // Method to withdraw money after checking the minimum balance
+    public void withdraw(double amount) {
+        if (amount > 0 && (balance - amount) >= 500) {
+            balance -= amount;
+            System.out.println("Amount Rs." + amount + " withdrawn successfully.");
+        } else if ((balance - amount) < 500) {
+            System.out.println("Insufficient balance. Minimum balance must be Rs.500.");
+        } else {
+            System.out.println("Invalid withdrawal amount.");
+        }
+        displayBalance();
+    }
+
+    // Method to display the current balance
+    public void displayBalance() {
+        System.out.println("Current balance: Rs." + balance);
+    }
+
+    // Method to display account details
+    public void displayAccountDetails() {
+        System.out.println("\nAccount Holder: " + depositorName);
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Account Type: " + accountType);
+        displayBalance();
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Getting account details from the user
+        System.out.print("Enter depositor's name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter account number: ");
+        String accNumber = scanner.nextLine();
+
+        System.out.print("Enter account type (Savings/Current): ");
+        String accType = scanner.nextLine();
+
+        // Creating a new bank account
+        BankAccount account = new BankAccount(name, accNumber, accType);
+
+        // Displaying the account details
+        account.displayAccountDetails();
+
+        // Performing deposit and withdrawal operations
+        System.out.print("\nEnter amount to deposit: ");
+        double depositAmount = scanner.nextDouble();
+        account.deposit(depositAmount);
+
+        System.out.print("\nEnter amount to withdraw: ");
+        double withdrawAmount = scanner.nextDouble();
+        account.withdraw(withdrawAmount);
+
+        // Closing the scanner object
+        scanner.close();
+    }
+}
