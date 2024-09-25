@@ -1,0 +1,56 @@
+class MultiplicationTable extends Thread {
+    private int number;
+
+    // Constructor to set the multiplication number
+    public MultiplicationTable(int number) {
+        this.number = number;
+    }
+
+    // Method to display the multiplication table
+    public void run() {
+        // Loop through 1 to 10 to create the multiplication table
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " x " + i + " = " + (number * i));
+            try {
+                // Sleep for a while to simulate some work
+                Thread.sleep(500); // 500 milliseconds
+            } catch (InterruptedException e) {
+                System.out.println("Thread interrupted: " + e.getMessage());
+            }
+        }
+    }
+}
+
+public class MultiplicationTableDemo {
+    public static void main(String[] args) {
+        // Create two thread instances for 5 and 10
+        MultiplicationTable table5 = new MultiplicationTable(5);
+        MultiplicationTable table10 = new MultiplicationTable(10);
+
+        // Display the thread states
+        System.out.println("Thread 5 State (New): " + table5.getState());
+        System.out.println("Thread 10 State (New): " + table10.getState());
+
+        // Start the threads
+        table5.start();
+        table10.start();
+
+        // Display the thread states after starting
+        System.out.println("Thread 5 State (Runnable): " + table5.getState());
+        System.out.println("Thread 10 State (Runnable): " + table10.getState());
+
+        try {
+            // Wait for the threads to finish
+            table5.join();
+            table10.join();
+        } catch (InterruptedException e) {
+            System.out.println("Main thread interrupted: " + e.getMessage());
+        }
+
+        // Display the thread states after completion
+        System.out.println("Thread 5 State (Terminated): " + table5.getState());
+        System.out.println("Thread 10 State (Terminated): " + table10.getState());
+
+        System.out.println("Multiplication tables for 5 and 10 displayed.");
+    }
+}
